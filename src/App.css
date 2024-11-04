@@ -1,0 +1,244 @@
+li {
+  list-style:none;
+}
+ul {
+  padding-left:0px !important; 
+}
+
+.pd-50 {
+  padding:50px;
+}
+
+.chat-window {
+  position: fixed;  /* Keeps the chat window fixed */
+  bottom: 90px; 
+  right: 20px;
+  width: 423px; 
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0A4777 40%, #FFFFFF 100%);
+  color: #000000;
+  border-radius: 18px;
+  padding: 20px; /* Ensures padding inside the chat window */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: height 0.4s ease, padding 0.3s ease-in-out;
+  box-sizing: border-box; /* Includes padding in the width and height calculations */
+}
+
+
+
+.chat-window.open {
+  height: 472px; 
+  padding: 20px;
+}
+
+.chat-window.closed {
+  height: 0; 
+  padding: 0;
+}
+
+/* Chat Toggle Button (Minimize Button) Styles */
+.chat-toggle-button {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #004F9F;
+  border-radius: 50%;
+  display: flex; /* Flexbox for centering */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.chat-icon {
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
+}
+
+.chat-toggle-button:hover {
+  transform: scale(1.1);
+}
+
+/* Header Section Styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px; /* Adjust padding as needed */
+  background-color: #0A4777; /* Navy blue color */
+  height: 100px; /* Set height to fit avatar and button */
+  
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+.avatar-container {
+  position: relative;
+  width: 120px; /* Adjust based on your design needs */
+  height: 120px; /* Adjust based on your design needs */
+  overflow: visible; /* Allows elements to break out */
+}
+
+.avatar-background {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: url('./assets/Ellipse 1.svg') center/cover no-repeat; /* Using an SVG or a color */
+  position: absolute;
+}
+
+.avatar-image {
+  position: absolute;
+  top: -20px; /* Adjust this value to position the crown breaking out */
+  left: -10px; /* Centering the avatar */
+  width: 140px; /* Larger than the container to allow for the crown */
+  height: auto;
+  z-index: 10; /* Ensures the avatar is on top */
+}
+
+
+/* Community Button */
+.community-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  background-color: #F0F8FC; /* Light background for the button */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  gap: 5px;
+  position: relative;
+  font-size: 14px;
+  color: #0A4777; /* Navy text color */
+}
+
+/* Community Button Text */
+.community-button-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #0A4777;
+  line-height: 21px;
+  text-align: right;
+}
+
+/* Community Button Icon */
+.community-button-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* Greeting Styles */
+.greeting h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #F8F8F8;
+  margin: 20;
+  
+}
+
+.greeting h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #F8F8F8;
+  text-align: left;
+  
+  margin-bottom:12px;
+}
+
+.subscription-card {
+  box-sizing: border-box; /* Includes padding and border in width */
+  width: 383px; /* Width adjusted to account for 20px padding on each side */
+  padding: 22px 24px; /* Internal padding for content */
+  margin-top: 12px; /* Space above card */
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.subscription-card-title, .subscription-card-text {
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Ensure no additional padding */
+  width: 100%; /* Uses the full width of the parent’s padding */
+}
+
+.subscription-card-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500; /* Medium weight */
+  line-height: 21px;
+  text-align: left;
+  color: #202020; /* Dark gray */
+  width: 318px; /* Set width */
+  margin: 0; /* Remove default margins */
+}
+
+.subscription-card-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400; /* Normal weight */
+  line-height: 21px;
+  text-align: left;
+  color: #707070; /* Lighter gray */
+  width: 318px; /* Set width */
+  margin-top: 10px; /* Space between title and paragraph if needed */
+}
+.footer-nav {
+  position: absolute;  /* Relative to the .chat-window */
+  bottom: 0;           /* At the bottom of the chat window */
+  left: 0;             /* Align with the left edge of the chat window */
+  right: 0;            /* Align with the right edge of the chat window */
+  display: flex;
+  justify-content: space-around;
+  background-color: #FFFFFF;
+  padding: 18px 20px;  /* Match Figma padding */
+  border-top: 1px solid #F2F2F2;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-button {
+  flex: 1;
+  padding: 10px 0;
+  background: none;
+  color: #048DC1;
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #F0F0F0;
+}
+
+.nav-button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.chat-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.chat-icon {
+  width: 50px;
+  height: 50px;
+}
+
+
+

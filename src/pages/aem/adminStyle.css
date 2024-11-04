@@ -1,0 +1,132 @@
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.admin-navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.admin-navbar ul li {
+  display: inline;
+}
+
+.admin-navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+}
+
+.admin-main-content {
+  padding: 20px;
+}
+
+.ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-table th, .ticket-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.ticket-table th {
+  background-color: #f2f2f2;
+}
+
+.view-ticket-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.view-ticket-btn:hover {
+  background-color: #45a049;
+}
+
+.ticket-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket-detail-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.close-btn {
+  background-color: red;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: darkred;
+}
+
+/* Dropdown for Status with full background color */
+.status-dropdown {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.status-open {
+  background-color: green;
+}
+
+.status-processing {
+  background-color: yellow;
+  color: black; /* Black text for better visibility */
+}
+
+.status-closed {
+  background-color: red;
+}
+
+
+
+/* New Styles for the filter group */
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filters-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}

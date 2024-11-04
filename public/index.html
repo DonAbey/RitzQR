@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>AEM</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous"> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- Dialogflow Messenger Integration -->
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    
+    <!-- <df-messenger
+      id="chatbot"
+      project-id="journaler-ai-bot"
+      agent-id="3b287d4f-cdaf-4e85-aceb-a8a0eea1c905"      
+      allow-feedback="all"
+      language-code="en">
+      <df-messenger-chat-bubble chat-title="Mr Journaler"></df-messenger-chat-bubble>
+    </df-messenger> -->
+    
+    <style>
+      /* df-messenger {
+        z-index: 999;
+        position: fixed;
+        --df-messenger-font-color: #000;
+        --df-messenger-font-family: Google Sans;
+        --df-messenger-chat-background: #f3f6fc;
+        --df-messenger-message-user-background: #d3e3fd;
+        --df-messenger-message-bot-background: #fff;
+        bottom: 16px;
+        right: 16px;
+      } */
+      df-messenger {
+        --df-messenger-chat-bubble-icon-color: #d3e3fd; /* Bot message bubble */
+        --df-messenger-message-user-background: #048DC1;
+        --df-messenger-message-bot-background: #E5E5E5; 
+        --df-messenger-message-bot-writing-background: #FFF;
+        --df-messenger-message-user-font-color: #FFF;
+        --df-messenger-user-message: #441039; /* User message bubble */
+        --df-messenger-font-color: #000; /* Text color */
+        --df-messenger-send-icon: #007bff; /* Send button */
+        --df-messenger-button-titlebar-color: #007bff; /* Header background */
+        --df-messenger-chat-background-color: #ffffff; /* Chat background */
+        --df-messenger-chat-border-radius: 12px;
+        --df-messenger-chat-window-width: 440px;
+        --df-messenger-titlebar-background: linear-gradient(103deg, #0341a1 0%, #22b7bb 100%);
+        --df-messenger-chat-scroll-button-align: flex-end;
+        --df-messenger-chat-bubble-chat-icon: URL('./public/logo192.png');
+        --df-messenger-titlebar-icon-height: 50px;
+        --df-messenger-titlebar-icon-width: 50px;
+        --df-messenger-chat-bubble: expanded ;
+        --df-messenger-titlebar-font-color: #FFF;
+        
+        
+        z-index: 999;
+        position: fixed;
+        bottom: 20px;
+        right: 30px !important;
+        width: 50px !important;
+        height: 50px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const originalSetItem = sessionStorage.setItem;
+
+
+        window.addEventListener('resetChatbot', () => {
+          const dfMessenger = document.querySelector('df-messenger');
+          if (dfMessenger){
+            sessionStorage.setItem('greetingUser','false');
+            //dfMessenger.clearStorage();
+            dfMessenger.startNewSession({ retainHistory: false });
+          }
+        });
+
+        sessionStorage.setItem = function (key, value) {
+            originalSetItem.apply(this, arguments);
+            if (key === 'df-messenger-chatBubbleExpansion') {
+                const chatBubbleExpanded = value === 'true';
+                if (chatBubbleExpanded) {
+                    passUserNameToChatbot();
+                }
+            }
+        };
+
+        function passUserNameToChatbot() {
+            const activeUser = JSON.parse(localStorage.getItem('activeUser'));
+            const aemUser = JSON.parse(localStorage.getItem('aemUser'));
+            const sessionID = sessionStorage.getItem('df-messenger-sessionID'); // Retrieve session ID
+            const greetingUser = sessionStorage.getItem('greetingUser');
+
+            if (activeUser && (greetingUser == 'false')) {
+              const dfMessenger = document.querySelector('df-messenger');
+              dfMessenger.sendQuery('My name is ' + aemUser.name + ' and userid is ' + aemUser.id)//  + ' and the sessionID is ' + sessionID);
+              sessionStorage.setItem('greetingUser','true')
+            }else if(!activeUser && (greetingUser == 'false')){
+              const dfMessenger = document.querySelector('df-messenger');
+              dfMessenger.renderCustomText("G'day, I'm Mr Journaler, your virtual agent. How can I help you today? ", true);
+              sessionStorage.setItem('greetingUser','true')
+            }
+        }
+      });
+    </script>
+  </body>
+</html>
