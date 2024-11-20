@@ -10,7 +10,12 @@ const Home = () => {
 
   const startCamera = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const constraints = {
+        video: {
+          facingMode: { exact: "environment" }, // Use back camera by default
+        },
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
       videoRef.current.srcObject = stream;
       videoRef.current.play();
     } catch (error) {
@@ -60,7 +65,7 @@ const Home = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            image_data: imagePreview.split(",")[1],
+            image_data: imagePreview.split(",")[1], // Base64 without the prefix
             file_name: `${editableCode}.jpg`,
           }),
         }
@@ -78,33 +83,46 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <div className="button-container">
-        <button onClick={startCamera}>Start Camera</button>
+    <div className="container text-center">
+      <h2 className="QR">QR Code Scanner</h2>
+      <div className="button-container mb-3">
+        <button onClick={startCamera} className="btn btn-primary">
+          Start Camera
+        </button>
       </div>
 
-      <div className="video-section">
-        <video ref={videoRef} style={{ width: "100%" }} />
+      <div className="video-section mb-3">
+        <video ref={videoRef} style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }} />
       </div>
 
-      <div className="button-container">
-        <button onClick={takePhoto}>Take Photo</button>
+      <div className="button-container mb-3">
+        <button onClick={takePhoto} className="btn btn-secondary">
+          Take Photo
+        </button>
       </div>
 
       {imagePreview && (
         <div className="image-preview-section text-center">
-          <img src={imagePreview} alt="Captured" />
-          <div className="code-container" style={{ marginTop: "10px" }}>
-            <label>Code:</label>
+          <img
+            src={imagePreview}
+            alt="Captured"
+            style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }}
+          />
+          <div className="code-container mt-3">
+            <label htmlFor="code-input" className="form-label">
+              Code:
+            </label>
             <input
+              id="code-input"
               type="text"
               value={editableCode}
               onChange={(e) => setEditableCode(e.target.value)}
-              style={{ marginLeft: "10px" }}
+              className="form-control d-inline-block"
+              style={{ width: "300px" }}
             />
           </div>
-          <div className="button-container">
-            <button onClick={uploadQR} style={{ marginTop: "10px" }}>
+          <div className="button-container mt-3">
+            <button onClick={uploadQR} className="btn btn-success">
               Upload QR
             </button>
           </div>

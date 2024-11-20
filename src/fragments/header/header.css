@@ -1,36 +1,68 @@
-@import url("https://cdn-uicons.flaticon.com/2.2.0/uicons-regular-rounded/css/uicons-regular-rounded.css");
-@import url("https://cdn-uicons.flaticon.com/2.2.0/uicons-regular-straight/css/uicons-regular-straight.css");
-.search {
-  width: 500px !important;
-}
-.header-item-style {
-  text-decoration: none;
-  color: #daddc4;
-}
-.username-style {
-  color: #daddc4;
-}
-.header-item-style:hover {
-  color: rgb(0, 0, 0) !important;
-}
-.soil-logo {
-  color: rgb(218, 221, 196);
-  text-decoration: none !important;
-}
-
+/* General styles */
 .header-nav {
-  background-color: #3d33ff !important;
-}
-.items-cart {
-  background-color: rgb(255, 29, 29);
-  color: white;
-  font-size: 12px;
-  color: #fff;
-  border-radius: 50%;
-  padding: 0px 5px;
+  background-color: #3d33ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust to make the header height consistent */
   position: relative;
-  left: -45px;
-  top: -15px;
-
-  opacity: 0.9;
 }
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo-img {
+  width: 50px;
+  height: auto;
+  margin-top: -15px;
+  margin-left: 15px;
+}
+
+.header-search-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.search {
+  width: 100%;
+  max-width: 400px; /* Adjust for large screens */
+  margin: 0 auto; /* Center the search bar */
+}
+
+/* Prevent horizontal scrolling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header-nav {
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .header-logo h1 {
+    font-size: 18px;
+  }
+
+  .search {
+    max-width: 90%;
+  }
+}
+/* .soil-logo d-inline{
+  margin-top: -100px;
+} */
