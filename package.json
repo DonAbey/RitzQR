@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.3",
     "crypto-browserify": "^3.12.0",
     "dialogflow": "^4.0.3",
+    "jsqr": "^1.4.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",
@@ -20,6 +21,7 @@
     "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "react-transition-group": "^4.4.5",
+    "react-webcam": "^7.2.0",
     "styled-components": "^6.1.12",
     "web-vitals": "^2.1.4"
   },

@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button-container {
+    margin: 10px 0;
+  }
+  
+  .video-section,
+  .image-preview-section {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  .text-center {
+    text-align: center;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+    
